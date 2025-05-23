@@ -11,6 +11,16 @@ app = FastAPI(title="Course Platform Suggestion API")
 def read_root():
     return {"message": "Welcome to the Course Platform Suggestion API. Visit /docs for interactive documentation."}
 
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # or set to your Vercel domain for security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 class CourseData(BaseModel):
     online_onsite: str
     location: Optional[str] = ""
