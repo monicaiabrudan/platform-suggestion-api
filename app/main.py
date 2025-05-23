@@ -7,6 +7,10 @@ from typing import Optional
 
 app = FastAPI(title="Course Platform Suggestion API")
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Course Platform Suggestion API. Visit /docs for interactive documentation."}
+
 class CourseData(BaseModel):
     online_onsite: str
     location: Optional[str] = ""
